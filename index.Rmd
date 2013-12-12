@@ -1,0 +1,329 @@
+---
+title       : Mockup of top indicators
+subtitle    : Hartford regional data and indicators
+author      : 
+job         : Community Indicators Project
+framework   : html5slides        # {io2012, html5slides, shower, dzslides, minimal ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+ext_widgets : {rCharts: ["libraries/nvd3"]} 
+mode        : selfcontained # {standalone, draft}
+---
+## Who are we: nativity
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_12_1YR_DP02&prodType=table); availability: most recent 2007-2011; breakouts: ancestry or place of birth.
+
+![image](../mockup/placeofbirth.png)
+
+--- 
+## Who are we: languages in school
+
+Source: [SDE](http://sdeportal.ct.gov/Cedar/WEB/ct_report/EllDT.aspx); availability: 2000-01 - 2010-11; breakouts: none.
+
+![image](../mockup/languages-4.png)
+
+--- 
+## Who are we: school enrollment
+
+Source: [SDE](http://sdeportal.ct.gov/Cedar/WEB/ct_report/EnrollmentDT.aspx); availability: 2006-07 - 2010-11; breakouts: type of school
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+enrollflow <- read.csv("../regionalreport/data/all-schools.csv", stringsAsFactors=FALSE)
+
+enrollflow <- subset(enrollflow, enrollflow$Resident.Town %in% levels(towns$Town))
+enrollflow$Resident.Town <- factor(enrollflow$Resident.Town)
+
+charters <- data.frame(charters = c("The Bridge Academy District",
+                            "Trailblazers Academy District",
+                            "Side By Side Community School District",
+                            "Park City Prep Charter School",
+                            "Odyssey Community School District",
+                            "New Beginnings Inc., Family Academy District",
+                            "Jumoke Academy District",
+                            "Highville Charter School District",  
+                            "Highville Mustard Seed Charter School District",       
+                            "Integrated Day Charter School District",        
+                            "Interdistrict School for Arts and Comm District",
+                            "Explorations District",
+                            "Elm City College Preparatory School",
+                            "Common Ground High School District",
+                            "Charter School for Young Children on Asylum Hill",
+                            "Bridgeport Achievement First",
+                            "Achievement First Hartford Academy Inc.",                
+                            "Amistad Academy District"))
+
+#Make the charters into their own category
+enrollflow$School.Type[enrollflow$Sent.to.District %in% levels(charters[,])] <- 'Public charter'
+
+enrollflow$Town.Type <- ifelse(enrollflow$Resident.Town %in% c("Bloomfield","East Hartford","East Windsor","Manchester","Vernon","Windsor","Windsor Locks"), "Towns with Alliance District","Other towns")
+
+enrollflow$Town.Type <- ifelse(enrollflow$Resident.Town %in% c("Hartford"),"Hartford",enrollflow$Town.Type)
+
+enrollflow <- ddply(enrollflow, .(Town.Type, School.Type), summarise, sum = sum(Total))
+
+#write.csv(enrollflow, "enrollflow.csv", row.names = FALSE)
+#Next command: write.csv(subset(otm, ratio > 0.05 & !(Destination == "All Other Locations")), "commute.csv", row.names = FALSE)
+```
+
+![image](../mockup/enrollment.png)
+
+--- 
+## Who are we: commuting patterns
+
+Source: [Census / DoL](http://onthemap.ces.census.gov/); availability: 2002 - 2011; breakouts: age, income, sector
+
+![image](../mockup/commute-patterns.png)
+
+--- 
+## Who are we: poverty and income
+
+Source: [Census](http://factfinder2.census.gov/); availability: most recent 2007-2011; breakouts: age, gender, race / ethnicity, commuting, others
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.width = 11}
+library(gridExtra)
+library(scales)
+
+income$town <- reorder(income$town, -income$income)
+inc1 <- ggplot(data = subset(income, !(town %in% c("Burlington","Columbia","Coventry","Hartland","Berlin","Union","Southington","Mansfield","Willington","Plainville","Bristol","New Britain")))) + 
+  geom_point(aes(x = income, y = town)) + 
+  geom_segment(aes(xend = income - se, x = income + se, y = town, yend = town), colour = "grey") + 
+  labs(x = 'Median household income', y = NULL) + 
+  scale_x_continuous(labels = comma) + 
+  theme_minimal()
+
+library(acs)
+library(maps)
+library(maptools)
+key = "ba67d3a427e1f785987b9c8bc59341bf7c8a7cc1"
+api.key.install(key)
+#hartford.towns = geo.make(state = "CT", county = c("Hartford","Tolland"), county.subdivision = "*", check = T)
+B17001 = acs.fetch(geography = hartford.towns, table.number = "B17001", col.names = "pretty")
+poverty.estimate = divide.acs(numerator=B17001[,2],denominator=B17001[,1], method = 'proportion')
+povertyacs = data.frame(town=geography(B17001)[[1]], 
+                         rate=as.numeric(estimate(poverty.estimate)),
+                         se=standard.error(poverty.estimate))
+names(povertyacs) <- c("town","rate","se")
+povertyacs$town= gsub(" town, Tolland County, Connecticut", "", povertyacs$town)
+povertyacs$town= gsub(" town, Hartford County, Connecticut", "", povertyacs$town)
+povertyacs$town <- reorder(povertyacs$town, povertyacs$rate)
+
+inc2 <- ggplot(data = subset(povertyacs, !(town %in% c("Burlington","Columbia","Coventry","Hartland","Berlin","Union","Southington","Mansfield","Willington","Plainville","Bristol","New Britain")))) + 
+  geom_point(aes(x = rate, y = town)) + 
+  geom_segment(aes(xend = rate - se, x = rate + se, y = town, yend = town), colour = "grey") + 
+  labs(x = '% living under federal poverty line (2007-2011 ACS estimates)', y = NULL) + 
+  scale_x_continuous(labels = percent) + 
+  theme_minimal()
+
+grid.arrange(inc1,inc2,nrow=1)
+```
+--- 
+## Education: 3rd grade reading
+
+Source: [SDE](http://sdeportal.ct.gov/Cedar/WEB/ct_report/CMTLandingDT.aspx); availability: 2005-06 - 2010-2011; breakouts: ELL, special-education status, gender, race / ethnicity, free / reduced-price lunch eligibility
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 11}
+cmt <- read.csv('../testscores/cmt.csv', na.strings = c("**","-"))
+cmt <- subset(cmt, cmt$District.ID %in% 
+                     levels(as.factor(districts$districtid)))
+glravg <- ddply(subset(cmt, Test == "Reading" & Grade == 3),.(District.Name),
+                summarise, 
+                avg = mean(Standard.CMT.Score.Summary.Average.Scale.Score, na.rm = TRUE))
+cmt$District.Name <-factor(cmt$District.Name, levels=glravg[order(-glravg$avg), "District.Name"])
+glr1 <- ggplot(data = subset(cmt, Test == "Reading" & Grade == 3), 
+       aes(x = District.Name, 
+           y = Standard.CMT.Score.Summary.Percent.at.above.Goal.level)) + 
+  geom_boxplot() + 
+  coord_flip() + 
+  theme_minimal() + 
+  labs(x = NULL, y = "Percent above goal, 3rd grade reading")
+
+cmt_subgroups <- read.csv('../testscores/cmt-subgroups.csv', na.strings = c("**","-"))
+cmt_subgroups <- subset(cmt_subgroups, cmt_subgroups$District.ID %in% 
+                     levels(as.factor(districts$districtid)))
+
+#Clean up race categories - make compatible with old categories
+cmt_subgroups$Status = gsub(x = cmt_subgroups$Status, 
+                                pattern = "American Indian/Alaska Native",
+                                replacement = "American Indian")
+
+cmt_subgroups$Status = gsub(x = cmt_subgroups$Status, 
+                                pattern = "Black/African American",
+                                replacement = "Black, not of Hispanic Origin")
+
+cmt_subgroups$Status = gsub(x = cmt_subgroups$Status, 
+                                pattern = "(White$)",
+                                replacement = "White, not of Hispanic Origin")
+
+cmt_subgroups <- subset(cmt_subgroups, Students.Tested > 0)
+
+glr2 <- 
+ggplot(data = subset(cmt_subgroups, Test == "Reading" & Grade == 3), 
+       aes(x = Status, y = Percent.at.or.Above.Goal)) + 
+  geom_boxplot() + 
+  coord_flip() + 
+  theme_minimal() + 
+  labs(x = NULL, y = "Percent at or above goal, 3rd grade reading")
+
+grid.arrange(glr1,glr2,nrow=1)
+```
+--- 
+## Education: chronic absenteeism
+
+Source: [SDE](http://sdeportal.ct.gov/Cedar/); availability: 2012; breakouts: ELL, special-education status, gender, race / ethnicity, free / reduced-price lunch eligibility
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 11}
+absenteeism <- read.csv("../hodgepodge/CT_ChronicAbsenteeism_2012_SDE-1.csv")
+absenteeism <- subset(absenteeism, absenteeism$District.Number %in% levels(as.factor(districts$districtid)))
+absenteeism$District <- reorder(absenteeism$District, absenteeism$Students.Chronically.Absent.in.District..Total)
+
+abs1 <- ggplot(data = absenteeism, aes(x = Students.Chronically.Absent.in.District..Total, 
+                               y = District)) + 
+  geom_point() + 
+  theme_minimal() +
+  labs(x = "% students chronically absent (2012)", y = NULL)
+
+absenteeism_subgroups <- read.csv('../hodgepodge/subgroups-absenteeism.csv', 
+                                  na.strings = c("*"," - "))
+absenteeism_subgroups <- subset(absenteeism_subgroups, absenteeism_subgroups$District.Code %in% levels(as.factor(districts$districtid)))
+absenteeism_subgroups <- subset(absenteeism_subgroups, CHRONIC.COUNTS >= 0)
+
+abs2 <- ggplot(data = absenteeism_subgroups, aes(x = Statu, y = CHRONIC.PERCENT)) + 
+  geom_boxplot() + 
+  coord_flip() + 
+  theme_minimal() + 
+  labs(x = NULL, y = "Percent chronically absent, 2011")
+
+grid.arrange(abs1,abs2,nrow=1)
+```
+--- 
+## Education: high-school graduation
+
+Source: [SDE](http://sdeportal.ct.gov/Cedar/WEB/ResearchandReports/DataBulletins.aspx); availability: 2010-11; breakouts: ELL, special-education status, gender, race / ethnicity, free / reduced-price lunch eligibility
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 11}
+allgrads <- ddply(subset(hsgrad[1:4], Category %in% c("All Students")),
+                  .(District.Name),
+                  summarise,
+                  rate = mean(X4.Year.Graduation.Rate, na.rm = TRUE))
+allgrads$District.Name <- reorder(allgrads$District.Name, -allgrads$rate)
+hsgrad1 <- 
+  ggplot(data = allgrads, aes(y = District.Name, x = rate)) + 
+  geom_point() + 
+  xlim(50,100) +
+  labs(y = NULL, x = "Four-year graduation rate") + 
+  theme_minimal()
+
+hsgrad2 <- ggplot(data = subset(hsgrad, !(Category %in% c("All Students")))) + 
+  geom_boxplot(aes(x = Category, y = X4.Year.Graduation.Rate)) + 
+  coord_flip() + 
+  ylim(50,100) +
+  theme_minimal() + 
+  labs(x = NULL, y = "Four-year graduation rate")
+
+grid.arrange(hsgrad1,hsgrad2,nrow=1)
+```
+--- 
+## Economy: educational attainment
+
+Source: [Census](http://factfinder2.census.gov/); availability: most recent 2007-2011; breakouts: age, gender, race / ethnicity, commuting, others
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.width = 11}
+B23006 = acs.fetch(geography = hartford.towns, table.number = "B23006", col.names = "pretty")
+
+attainbar = data.frame(town=geography(B23006)[[1]],
+                        nohs=as.numeric(estimate(B23006[,2])),
+                        hsgrad=as.numeric(estimate(B23006[,9])),
+                        somecollege=as.numeric(estimate(B23006[,16])),
+                        bachelors=as.numeric(estimate(B23006[,23])))
+attainbar$town= gsub(" town, Tolland County, Connecticut", "", attainbar$town)
+attainbar$town= gsub(" town, Hartford County, Connecticut", "", attainbar$town)
+attainbar$town <- reorder(attainbar$town, (attainbar$nohs + attainbar$hsgrad) / (attainbar$nohs + attainbar$hsgrad + attainbar$somecollege + attainbar$bachelors))
+attainbar <- melt(attainbar)
+
+ggplot(data = subset(attainbar, !(town %in% c("Burlington","Columbia","Coventry","Hartland","Berlin","Union","Southington","Mansfield","Willington","Plainville","Bristol","New Britain"))), aes(y = value, x = town, group = variable, fill = variable)) + 
+  geom_area(position = 'fill') + 
+  scale_y_continuous(labels = percent) +
+  labs(x = NULL, y = '% of the population (2007 - 2011 ACS estimates)') +
+  scale_fill_brewer(labels = c("Less than high school degree",
+                               "High school graduate",
+                               "Some college or associate's degree",
+                               "Bachelor's degree or higher")) +
+  coord_flip() + 
+  theme_minimal()
+```
+
+--- 
+## Economy: unemployment and labor force participation
+
+Sources: [ACS](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&prodType=table), [BLS](http://www1.ctdol.state.ct.us/lmi/LAUS/default.asp); ACS: most recent 2007-11; BLS: 1994 - 2013; breakouts: age, gender, race / ethnicity, nativity, commuting, others (ACS only).
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 10}
+employment$town <- reorder(employment$town, employment$employment)
+ue1 <- ggplot(data = (data = subset(employment, !(town %in% c("Burlington","Columbia","Coventry","Hartland","Berlin","Union","Southington","Mansfield","Willington","Plainville","Bristol","New Britain"))))) + 
+  geom_point(aes(x = employment, y = town)) + 
+  geom_segment(aes(xend = employment - se.employment, 
+                   x = employment + se.employment, 
+                   y = town, yend = town), colour = "grey") + 
+  labs(x = 'Unemployment rates (2007-2011 ACS estimates)', y = NULL) + 
+  scale_x_continuous(labels = percent) + 
+  theme_minimal()
+
+employment$town <- reorder(employment$town, employment$participation)
+ue2 <- ggplot(data = subset(employment, !(town %in% c("Burlington","Columbia","Coventry","Hartland","Berlin","Union","Southington","Mansfield","Willington","Plainville","Bristol","New Britain")))) + 
+  geom_point(aes(x = participation, y = town)) + 
+  geom_segment(aes(xend = participation - se.participation, 
+                   x = participation + se.participation, 
+                   y = town, yend = town), colour = "grey") + 
+  labs(x = '% not in labor force (2007-2011 ACS estimates)', y = NULL) + 
+  scale_x_continuous(labels = percent) + 
+  theme_minimal()
+
+grid.arrange(ue1,ue2,nrow=1)
+```
+--- 
+## Quality of life: home ownership
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table); availability: most recent 2007-2011; breakouts: age, gender, race / ethnicity, others
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+B25008 = acs.fetch(geography = hartford.towns, table.number = "B25008", col.names = "pretty")
+own.estimate = divide.acs(numerator=B25008[,2],denominator=B25008[,1], method = 'proportion')
+homeownership = data.frame(town=geography(B25008)[[1]], 
+                         rate=as.numeric(estimate(own.estimate)),
+                         se=standard.error(own.estimate))
+names(homeownership) <- c("town","rate","se")
+homeownership$town= gsub(" town, Tolland County, Connecticut", "", homeownership$town)
+homeownership$town= gsub(" town, Hartford County, Connecticut", "", homeownership$town)
+homeownership$town <- reorder(homeownership$town, -homeownership$rate)
+ggplot(data = subset(homeownership, !(town %in% c("Burlington","Columbia","Coventry","Hartland","Berlin","Union","Southington","Mansfield","Willington","Plainville","Bristol","New Britain")))) + 
+  geom_point(aes(x = rate, y = town)) + 
+  geom_segment(aes(xend = rate - se, x = rate + se, y = town, yend = town), colour = "grey") + 
+  labs(x = 'Rate of owner-occupied housing (2007-2011 ACS estimates)', y = NULL) + 
+  scale_x_continuous(labels = percent) + 
+  theme_minimal()
+```
+--- 
+## Quality of life: crime
+
+Source: [Dept. of Public Safety](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx); availability: 2001-10; breakouts: property / violent, type of crime
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+totalcrime <- read.csv("../crime/totalcrime.csv")
+totalcrime <- subset(totalcrime, totalcrime$Town %in% levels(towns$Town))
+totalcrime$Town <- factor(totalcrime$Town)
+totalcrime <- ddply(subset(totalcrime, Year >= 2005), .(Town), summarise,
+                    Total.crime.Rate = mean(Total.crime.Rate, na.rm = T))
+totalcrime$Town <- reorder(totalcrime$Town, totalcrime$Total.crime.Rate)
+ggplot(data = totalcrime, aes(y = Town, x = Total.crime.Rate)) + 
+  geom_point() +
+  labs(y = NULL, x = "Average total crimes per 100K individuals by town (2005 - 2010)") +
+  theme_minimal()
+```
+--- 
+## Quality of life: voter turnout / registration
+
+Workin' on it.
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
+
+```
