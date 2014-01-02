@@ -3,7 +3,7 @@ title       : Mockup of top indicators
 subtitle    : Hartford regional data and indicators
 author      : 
 job         : Community Indicators Project
-framework   : html5slides        # {io2012, html5slides, shower, dzslides, minimal ...}
+framework   : io2012        # {io2012, html5slides, shower, dzslides, minimal ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 ext_widgets : {rCharts: ["libraries/nvd3"]} 
@@ -46,60 +46,159 @@ Source: [Census](http://factfinder2.census.gov/); availability: most recent 2007
 
 ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2.png) 
 
+
+--- 
+## Who are we: poverty and income (2)
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&prodType=table); availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others
+
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3.png) 
+
+
+--- 
+## Who are we: poverty and income (3)
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&prodType=table); availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others
+
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
+
+
+--- 
+## Who are we: poverty and income (4)
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&prodType=table); availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others
+
+![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5.png) 
+
+
+--- 
+## Who are we: poverty and income (5)
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&prodType=table); availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others
+
+![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6.png) 
+
+
+--- 
+## Who we are: income (by neighborhood)
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&prodType=table).
+
+![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
+
+
 --- 
 ## Education: 3rd grade reading
 
 Source: [SDE](http://sdeportal.ct.gov/Cedar/WEB/ct_report/CMTLandingDT.aspx); availability: 2005-06 - 2010-2011; breakouts: ELL, special-education status, gender, race / ethnicity, free / reduced-price lunch eligibility
 
-![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3.png) 
+![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8.png) 
 
 --- 
 ## Education: chronic absenteeism
 
 Source: [SDE](http://sdeportal.ct.gov/Cedar/); availability: 2012; breakouts: ELL, special-education status, gender, race / ethnicity, free / reduced-price lunch eligibility
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
+![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9.png) 
 
 --- 
 ## Education: high-school graduation
 
 Source: [SDE](http://sdeportal.ct.gov/Cedar/WEB/ResearchandReports/DataBulletins.aspx); availability: 2010-11; breakouts: ELL, special-education status, gender, race / ethnicity, free / reduced-price lunch eligibility
 
-![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5.png) 
+![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10.png) 
 
 --- 
 ## Economy: educational attainment
 
 Source: [Census](http://factfinder2.census.gov/); availability: most recent 2007-2011; breakouts: age, gender, race / ethnicity, commuting, others
 
-![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6.png) 
+![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11.png) 
 
 
 --- 
-## Economy: unemployment and labor force participation
+## Economy: educational attainment by race
+
+Source: [Census](http://factfinder2.census.gov/)
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12.png) 
+
+
+
+--- 
+## Economy: workforce and unemployment
 
 Sources: [ACS](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&prodType=table), [BLS](http://www1.ctdol.state.ct.us/lmi/LAUS/default.asp); ACS: most recent 2007-11; BLS: 1994 - 2013; breakouts: age, gender, race / ethnicity, nativity, commuting, others (ACS only).
 
-![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7.png) 
+![plot of chunk unnamed-chunk-13](assets/fig/unnamed-chunk-13.png) 
+
 
 --- 
-## Quality of life: home ownership
+## Economy: unemployment by race
 
-Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table); availability: most recent 2007-2011; breakouts: age, gender, race / ethnicity, others
+Sources: [ACS](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&prodType=table). 
 
-![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8.png) 
+![plot of chunk unnamed-chunk-14](assets/fig/unnamed-chunk-14.png) 
+
 
 --- 
-## Quality of life: crime
+## Quality of life: home ownership (by town)
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table); availability: most recent 2007-2011
+
+![plot of chunk unnamed-chunk-15](assets/fig/unnamed-chunk-15.png) 
+
+
+--- 
+## Quality of life: home ownership (by neighborhood)
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table).
+
+![plot of chunk unnamed-chunk-16](assets/fig/unnamed-chunk-16.png) 
+
+
+--- 
+## Quality of life: home ownership (by race)
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table).
+
+![plot of chunk unnamed-chunk-17](assets/fig/unnamed-chunk-17.png) 
+
+
+--- 
+## Quality of life: housing and transit cost
+
+Source: [Location Affordability Index](http://lai.locationaffordability.info/).
+
+![plot of chunk unnamed-chunk-18](assets/fig/unnamed-chunk-18.png) 
+
+
+--- 
+## Quality of life: crime (comparison)
 
 Source: [Dept. of Public Safety](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx); availability: 2001-10; breakouts: property / violent, type of crime
 
-![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9.png) 
+![plot of chunk unnamed-chunk-19](assets/fig/unnamed-chunk-19.png) 
+
+--- 
+## Quality of life: crime (comparison)
+
+Source: [FBI](http://www.ucrdatatool.gov/); availability: 1985-2012; breakouts: property / violent, type of crime
+
+![plot of chunk unnamed-chunk-20](assets/fig/unnamed-chunk-20.png) 
+
+--- 
+
+## Quality of life: crime (within region)
+
+Source: [Dept. of Public Safety](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx); availability: 2001-10; breakouts: property / violent, type of crime
+
+![plot of chunk unnamed-chunk-21](assets/fig/unnamed-chunk-21.png) 
 
 --- 
 ## Quality of life: voter turnout / registration
 
-Workin' on it.
+Source: [CT Secretary of State](http://www.ct.gov/sots/cwp/view.asp?a=3179&q=392194), [HartfordInfo](http://hartfordinfo.org/).
 
-
+![plot of chunk unnamed-chunk-22](assets/fig/unnamed-chunk-22.png) 
 
