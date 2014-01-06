@@ -53,97 +53,97 @@ New Britain,,4175
 ,,4305
 ,,4306.01
 ,,4306.02
-,,4601
-,,4602.02
-,,4602.03
-,,4602.04
-,,4603.01
-,,4603.02
-,,4621.01
-,,4621.02
-,,4622.01
-,,4622.02
-,,4641.01
-,,4641.02
-,,4661.01
-,,4661.02
-,,4662.01
-,,4662.02
-,,4663
-,,4664
-,,4681.01
-,,4681.02
-,,4701
-,,4711
-,,4712
-,,4713
-,,4714
-,,4715
-,,4731
-,,4734
-,,4735.01
-,,4735.02
-,,4736.01
-,,4736.02
-,,4737
-,,4738
-,,4761
-,,4762
-,,4763
-,,4771.01
-,,4771.02
-,,4772
-,,4803
-,,4804
-,,4805
-,,4806
-,,4807
-,,4808
-,,4809
-,,4810
-,,4811
-,,4812
-,,4813
-,,4841
-,,4842
-,,4871
-,,4872.01
-,,4872.02
-,,4873
-,,4874
-,,4875
-,,4901
-,,4903.02
-,,4921
-,,4922
-,,4923
-,,4924
-,,4925
-,,4926
-,,4941
-,,4942.01
-,,4942.02
-,,4943
-,,4944
-,,4945
-,,4946
-,,4961
-,,4962
-,,4963
-,,4964
-,,4965
-,,4966
-,,4967
-,,4968
-,,4969
-,,4970
-,,4971
-,,4972
-,,4973
-,,4974
-,,4975
-,,4976
-,,4977
+Farmington,,4601
+Farmington,,4602.02
+Farmington,,4602.03
+Farmington,,4602.04
+Farmington,,4603.01
+Farmington,,4603.02
+Avon,,4621.01
+Avon,,4621.02
+Avon,,4622.01
+Avon,,4622.02
+Canton,,4641.01
+Canton,,4641.02
+Simsbury,,4661.01
+Simsbury,,4661.02
+Simsbury,,4662.01
+Simsbury,,4662.02
+Simsbury,,4663
+Simsbury,,4664
+Granby,,4681.01
+Granby,,4681.02
+East Granby,,4701
+Bloomfield,,4711
+Bloomfield,,4712
+Bloomfield,,4713
+Bloomfield,,4714
+Bloomfield,,4715
+Windsor,,4731
+Windsor,,4734
+Windsor,,4735.01
+Windsor,,4735.02
+Windsor,,4736.01
+Windsor,,4736.02
+Windsor,,4737
+Windsor,,4738
+Windsor Locks,,4761
+Windsor Locks,,4762
+Windsor Locks,,4763
+Suffield,,4771.01
+Suffield,,4771.02
+Suffield,,4772
+Enfield,,4803
+Enfield,,4804
+Enfield,,4805
+Enfield,,4806
+Enfield,,4807
+Enfield,,4808
+Enfield,,4809
+Enfield,,4810
+Enfield,,4811
+Enfield,,4812
+Enfield,,4813
+East Windsor,,4841
+East Windsor,,4842
+South Windsor,,4871
+South Windsor,,4872.01
+South Windsor,,4872.02
+South Windsor,,4873
+South Windsor,,4874
+South Windsor,,4875
+Rocky Hill,,4901
+Rocky Hill,,4903.02
+Wethersfield,,4921
+Wethersfield,,4922
+Wethersfield,,4923
+Wethersfield,,4924
+Wethersfield,,4925
+Wethersfield,,4926
+Newington,,4941
+Newington,,4942.01
+Newington,,4942.02
+Newington,,4943
+Newington,,4944
+Newington,,4945
+Newington,,4946
+West Hartford,,4961
+West Hartford,,4962
+West Hartford,,4963
+West Hartford,,4964
+West Hartford,,4965
+West Hartford,,4966
+West Hartford,,4967
+West Hartford,,4968
+West Hartford,,4969
+West Hartford,,4970
+West Hartford,,4971
+West Hartford,,4972
+West Hartford,,4973
+West Hartford,,4974
+West Hartford,,4975
+West Hartford,,4976
+West Hartford,,4977
 Hartford,Barry Square,5001
 Hartford,Barry Square,5002
 Hartford,South Green,5003
@@ -201,53 +201,53 @@ East Hartford,,5111
 East Hartford,,5112
 East Hartford,,5113
 East Hartford,,5114
-,,5141.01
-,,5141.02
-,,5142
-,,5143
-,,5144
-,,5145
-,,5146
-,,5147
-,,5148
-,,5149
-,,5150
-,,5151.01
-,,5151.02
-,,5152
-,,5201
-,,5202.01
-,,5202.02
-,,5203.01
-,,5203.02
-,,5204
-,,5205.01
-,,5241
-,,5242
-,,5243
+Manchester,,5141.01
+Manchester,,5141.02
+Manchester,,5142
+Manchester,,5143
+Manchester,,5144
+Manchester,,5145
+Manchester,,5146
+Manchester,,5147
+Manchester,,5148
+Manchester,,5149
+Manchester,,5150
+Manchester,,5151.01
+Manchester,,5151.02
+Manchester,,5152
+Glastonbury,,5201
+Glastonbury,,5202.01
+Glastonbury,,5202.02
+Glastonbury,,5203.01
+Glastonbury,,5203.02
+Glastonbury,,5204
+Glastonbury,,5205.01
+Marlborough,,5241
+Rocky Hill,,5242
+Enfield,,5243
 ,,5244
 ,,5245.01
 ,,5245.02
 ,,5246
 ,,5247
-,,5261.01
-,,5261.02
-,,5281
-,,5291
-,,5301
-,,5302
-,,5303.01
-,,5303.02
-,,5304
-,,5305
-,,5306
-,,5331.01
-,,5331.02
-,,5351
-,,5352
-,,5381
-,,5382.01
-,,5382.02
+Hebron,,5261.01
+Hebron,,5261.02
+Andover,,5281
+Bolton,,5291
+Vernon,,5301
+Vernon,,5302
+Vernon,,5303.01
+Vernon,,5303.02
+Vernon,,5304
+Vernon,,5305
+Vernon,,5306
+Tolland,,5331.01
+Tolland,,5331.02
+Ellington,,5351
+Ellington,,5352
+Somers,,5381
+Somers,,5382.01
+Somers,,5382.02
 ,,8401
 ,,8501
 ,,8502
@@ -256,7 +256,7 @@ East Hartford,,5114
 ,,8812
 ,,8813
 ,,8815
-,,8901
-,,8902.01
-,,8902.02
-,,9800
+Stafford,,8901
+Stafford,,8902.01
+Stafford,,8902.02
+Windsor Locks,,9800
