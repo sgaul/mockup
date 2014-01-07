@@ -33,7 +33,7 @@ Workforce / economy / talent
 Quality of life / community
 * Home-ownership / housing cost
 * Crime rates
-* Voter registration / turnout
+* Voter turnout
 
 ---
 ## Who are we: Population and immigration
@@ -272,7 +272,7 @@ ggplot(data = subset(distn, Stat == "Estimate" & Subgroup == "All" & variable !=
 
 Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&prodType=table); availability: 1970 - 2012
 
-```{r echo = FALSE, warning = FALSE, message = FALSE, fig.width = 13}
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.width = 14}
 sumpoor <- 
 ggplot(aes(y = sumpoor, x = period), data = subset(gh_sum,period >= 1970)) + 
   geom_line(aes(group = type, colour = type)) + 
@@ -286,7 +286,8 @@ ggplot(data = subset(acs1yr,Percent >= .3)) +
   geom_segment(aes(xend = Percent - Percent.margin.of.error, 
                    x = Percent + Percent.margin.of.error, 
                    y = County.subdivision, yend = County.subdivision), colour = "grey") + 
-  labs(x = '% living under poverty line (2012 estimates)', y = NULL) + 
+  labs(x = '% living under poverty line (2012 estimates)', y = NULL, 
+       title = 'Poverty rates') + 
   scale_x_continuous(labels = percent) + 
   theme_minimal()
 
@@ -355,18 +356,19 @@ tracts <- merge(tracts, towns, by = "Town")
 income.tract <- merge(income.tract, tracts, by = "tract")
 
 ggplot(data = income.tract) + 
-  geom_dotplot(aes(x = income, fill = Towngroup, colour = Towngroup), 
-               stackgroups = TRUE, binpositions = "all", binwidth = 4000) +
+  geom_dotplot(aes(x = income, fill = Towngroup), 
+               stackgroups = TRUE, binpositions = "all", binwidth = 5700) +
+    scale_fill_brewer(name = "Type of town") + 
   scale_x_continuous(labels = comma) + 
   scale_y_continuous(name = "", breaks = NULL) + 
-  labs(x = "Neighborhoods by median household income") + 
+  labs(x = "Neighborhood household income levels") + 
   theme_minimal()
 ```
 
 --- 
 ## Education: 3rd grade reading
 
-Source: [SDE](http://sdeportal.ct.gov/Cedar/WEB/ct_report/CMTLandingDT.aspx); availability: 2005-06 - 2010-2011; breakouts: ELL, special-education status, gender, race / ethnicity, free / reduced-price lunch eligibility
+Source: [SDE](http://sdeportal.ct.gov/Cedar/WEB/ct_report/CMTLandingDT.aspx); availability: 2005-06 - 2010-2011.
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 11}
 cmt <- read.csv('../testscores/cmt.csv', na.strings = c("**","-"))
@@ -416,7 +418,7 @@ grid.arrange(glr1,glr2,nrow=1)
 --- 
 ## Education: chronic absenteeism
 
-Source: [SDE](http://sdeportal.ct.gov/Cedar/); availability: 2012; breakouts: ELL, special-education status, gender, race / ethnicity, free / reduced-price lunch eligibility
+Source: [SDE](http://sdeportal.ct.gov/Cedar/); availability: 2012.
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 11}
 absenteeism <- read.csv("../hodgepodge/CT_ChronicAbsenteeism_2012_SDE-1.csv")
@@ -445,7 +447,7 @@ grid.arrange(abs1,abs2,nrow=1)
 --- 
 ## Education: high-school graduation
 
-Source: [SDE](http://sdeportal.ct.gov/Cedar/WEB/ResearchandReports/DataBulletins.aspx); availability: 2010-11; breakouts: ELL, special-education status, gender, race / ethnicity, free / reduced-price lunch eligibility
+Source: [SDE](http://sdeportal.ct.gov/Cedar/WEB/ResearchandReports/DataBulletins.aspx); availability: 2010-11.
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 11}
 allgrads <- ddply(subset(hsgrad[1:4], Category %in% c("All Students")),
@@ -472,7 +474,7 @@ grid.arrange(hsgrad1,hsgrad2,nrow=1)
 --- 
 ## Economy: educational attainment
 
-Source: [Census](http://factfinder2.census.gov/); availability: most recent 2007-2011; breakouts: age, gender, race / ethnicity, commuting, others
+Source: [Census](http://factfinder2.census.gov/); availability: most recent 2008-2012.
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 11}
 B23006 = acs.fetch(geography = hartford.towns, table.number = "B23006", col.names = "pretty")
@@ -490,7 +492,41 @@ attainbar <- melt(attainbar)
 ggplot(data = subset(attainbar, !(town %in% c("Burlington","Columbia","Coventry","Hartland","Berlin","Union","Southington","Mansfield","Willington","Plainville","Bristol","New Britain"))), aes(y = value, x = town, group = variable, fill = variable)) + 
   geom_bar(position = 'fill', stat = 'identity') + 
   scale_y_continuous(labels = percent) +
-  labs(x = NULL, y = '% of the population (2007 - 2011 ACS estimates)') +
+  labs(x = NULL, y = '% of the population (2008 - 2012 ACS estimates)') +
+  scale_fill_brewer(labels = c("Less than high school degree",
+                               "High school graduate",
+                               "Some college or associate's degree",
+                               "Bachelor's degree or higher"),
+                    name = "") +
+  coord_flip() + 
+  theme_minimal()
+```
+
+--- 
+## Economy: educational attainment (totals)
+
+Source: [Census](http://factfinder2.census.gov/); availability: most recent 2008-2012.
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 11}
+attainbar = data.frame(town=geography(B23006)[[1]],
+                        nohs=as.numeric(estimate(B23006[,2])),
+                        hsgrad=as.numeric(estimate(B23006[,9])),
+                        somecollege=as.numeric(estimate(B23006[,16])),
+                        bachelors=as.numeric(estimate(B23006[,23])))
+attainbar$town= gsub(" town, Tolland County, Connecticut", "", attainbar$town)
+attainbar$town= gsub(" town, Hartford County, Connecticut", "", attainbar$town)
+
+attainbar$town <- reorder(attainbar$town, 
+                          (attainbar$nohs + 
+                             attainbar$hsgrad + 
+                             attainbar$somecollege + 
+                             attainbar$bachelors))
+attainbar <- melt(attainbar)
+
+ggplot(data = subset(attainbar, !(town %in% c("Burlington","Columbia","Coventry","Hartland","Berlin","Union","Southington","Mansfield","Willington","Plainville","Bristol","New Britain"))), aes(y = value, x = town, group = variable, fill = variable)) + 
+  geom_bar(position = 'stack', stat = 'identity') + 
+  scale_y_continuous(labels = comma) +
+  labs(x = NULL, y = 'Adults (2008 - 2012 ACS estimates)') +
   scale_fill_brewer(labels = c("Less than high school degree",
                                "High school graduate",
                                "Some college or associate's degree",
@@ -503,7 +539,7 @@ ggplot(data = subset(attainbar, !(town %in% c("Burlington","Columbia","Coventry"
 --- 
 ## Economy: educational attainment by race
 
-Source: [Census](http://factfinder2.census.gov/)
+Source: [Census](http://factfinder2.census.gov/); most recent: 2008 - 2012.
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.width = 11}
 crcog.towns = geo.make(state = "CT", 
@@ -580,7 +616,7 @@ ggplot(data = attainment.by.race,
 --- 
 ## Economy: workforce and unemployment
 
-Sources: [ACS](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&prodType=table), [BLS](http://www1.ctdol.state.ct.us/lmi/LAUS/default.asp); ACS: most recent 2007-11; BLS: 1994 - 2013; breakouts: age, gender, race / ethnicity, nativity, commuting, others (ACS only).
+Sources: [ACS](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&prodType=table)breakouts: age, gender, race / ethnicity, nativity, commuting, others.
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 11}
 employment$town <- reorder(employment$town, employment$employment)
@@ -589,7 +625,7 @@ ue1 <- ggplot(data = (data = subset(employment, !(town %in% c("Burlington","Colu
   geom_segment(aes(xend = employment - se.employment, 
                    x = employment + se.employment, 
                    y = town, yend = town), colour = "grey") + 
-  labs(x = 'Unemployment rates (2007-2011 ACS estimates)', y = NULL) + 
+  labs(x = 'Unemployment rates (2008-2012 ACS estimates)', y = NULL) + 
   scale_x_continuous(labels = percent) + 
   theme_minimal()
 
@@ -599,7 +635,7 @@ ue2 <- ggplot(data = subset(employment, !(town %in% c("Burlington","Columbia","C
   geom_segment(aes(xend = participation - se.participation, 
                    x = participation + se.participation, 
                    y = town, yend = town), colour = "grey") + 
-  labs(x = '% not in labor force (2007-2011 ACS estimates)', y = NULL) + 
+  labs(x = '% not in labor force (2008-2012 ACS estimates)', y = NULL) + 
   scale_x_continuous(labels = percent) + 
   theme_minimal()
 
@@ -672,9 +708,61 @@ ggplot(data = subset(employment.by.race, (workforce.x + workforce.y) > 2000 & !(
 ```
 
 --- 
+## Economy: unemployment by race (2)
+
+Sources: [ACS](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&prodType=table). 
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 7, fig.width = 11}
+C23002I = acs.fetch(geography = crcog.towns, table.number = "C23002I", col.names = "pretty")
+C23002B = acs.fetch(geography = crcog.towns, table.number = "C23002B", col.names = "pretty")
+C23002H = acs.fetch(geography = crcog.towns, table.number = "C23002H", col.names = "pretty")
+
+employment.by.race = 
+  rbind(data.frame(town=geography(C23002I)[[1]],
+                 race = "Hispanic / Latino",
+                 workforce=as.numeric(estimate(C23002I[,3] + C23002I[,16])),
+                 uerate=as.numeric(estimate(divide.acs(
+                   numerator=(C23002I[,8] + C23002I[,21]),
+                   denominator=(C23002I[,4]+C23002I[,17])))),
+                 lfrate=as.numeric(estimate(divide.acs(
+                   numerator=(C23002I[,9] + C23002I[,22]),
+                   denominator=C23002I[,1])))),
+        data.frame(town=geography(C23002B)[[1]],
+                 race = "Black",
+                 workforce=as.numeric(estimate(C23002B[,3] + C23002B[,16])),
+                 uerate=as.numeric(estimate(divide.acs(
+                   numerator=(C23002B[,8] + C23002B[,21]),
+                   denominator=(C23002B[,4]+C23002B[,17])))),
+                 lfrate=as.numeric(estimate(divide.acs(
+                   numerator=(C23002B[,9] + C23002B[,22]),
+                   denominator=C23002B[,1])))),
+        data.frame(town=geography(C23002H)[[1]],
+               race = "White",
+               workforce=as.numeric(estimate(C23002H[,3] + C23002H[,16])),
+               uerate=as.numeric(estimate(divide.acs(
+                 numerator=(C23002H[,8] + C23002H[,21]),
+                 denominator=(C23002H[,4]+C23002H[,17])))),
+               lfrate=as.numeric(estimate(divide.acs(
+                 numerator=(C23002H[,9] + C23002H[,22]),
+                 denominator=C23002H[,1])))))
+
+ggplot(data = subset(
+  melt(employment.by.race, id.vars = c("town","race")),variable != "workforce")) + 
+  geom_bar(aes(y = value, x = race, fill = variable), position = 'dodge') + 
+  labs(y ='Unemployment by race (2007-2011 ACS)', 
+       x = NULL) + 
+  guides(size = guide_legend(title = "Number of\nworkers")) +
+  scale_y_continuous(labels = percent, limits = c(0,.3)) + 
+  scale_fill_brewer(name = "Indicator", labels = c("Unemployment rate",
+                                                   "Labor force participation")) + 
+  theme_minimal() + 
+  coord_flip()
+```
+
+--- 
 ## Quality of life: home ownership (by town)
 
-Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table); availability: most recent 2007-2011
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table); availability: most recent 2008-2012.
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 11}
 B25008 = acs.fetch(geography = hartford.towns, table.number = "B25008", col.names = "pretty")
@@ -778,6 +866,43 @@ ggplot(data = subset(homeownership.by.race, (estimate.x + estimate.y) > 500 & !(
 ```
 
 --- 
+## Quality of life: home ownership (by race 2)
+
+Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table).
+
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 7, fig.width = 11}
+B25003I = acs.fetch(geography = crcog.towns, table.number = "B25003I", col.names = "pretty")
+B25003B = acs.fetch(geography = crcog.towns, table.number = "B25003B", col.names = "pretty")
+B25003H = acs.fetch(geography = crcog.towns, table.number = "B25003H", col.names = "pretty")
+
+homeownership.by.race = rbind(      
+  data.frame(town=geography(B25003I)[[1]],
+                 race = "Hispanic / Latino",
+                 estimate=as.numeric(estimate(B25003I[,2])),
+                 rate=as.numeric(estimate(divide.acs(
+                   numerator=B25003I[,2],denominator=B25003I[,1])))),
+  data.frame(town=geography(B25003B)[[1]],
+                 race = "Black",
+                 estimate=as.numeric(estimate(B25003B[,2])),
+                 rate=as.numeric(estimate(divide.acs(
+                   numerator=B25003B[,2],denominator=B25003B[,1])))),
+  data.frame(town=geography(B25003H)[[1]],
+               race = "White",
+               estimate=as.numeric(estimate(B25003H[,2])),
+               rate=as.numeric(estimate(divide.acs(
+                 numerator=B25003H[,2],denominator=B25003H[,1])))))
+
+ggplot(data = homeownership.by.race) + 
+  geom_bar(aes(y = rate, x = race), stat = 'identity') + 
+  labs(y ='Homeownership by race (2007-2011 ACS)', 
+       x = NULL) + 
+  scale_y_continuous(labels = percent, limits = c(0,1)) + 
+  scale_fill_brewer(name = "Indicator", labels = c("Homeownership rate")) + 
+  theme_minimal() + 
+  coord_flip()
+```
+
+--- 
 ## Quality of life: housing and transit cost
 
 Source: [Location Affordability Index](http://lai.locationaffordability.info/).
@@ -877,7 +1002,7 @@ ggplot(data = subset(lai_hartford, variable %in% c("hh_type1_ht","hh_type3_ht",
 ```
 
 --- 
-## Quality of life: crime (comparison)
+## Quality of life: crime (major CT towns)
 
 Source: [Dept. of Public Safety](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx); availability: 2001-10; breakouts: property / violent, type of crime
 
@@ -885,7 +1010,7 @@ Source: [Dept. of Public Safety](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx); av
 totalcrime <- read.csv("../crime/totalcrime.csv")
 #totalcrime <- subset(totalcrime, totalcrime$Town %in% levels(towns$Town))
 #totalcrime$Town <- factor(totalcrime$Town)
-ggplot(data = subset(totalcrime, Town %in% c("Bridgeport","Hartford","New Haven","New London","Stamford","Waterbury")), 
+ggplot(data = subset(totalcrime, Town %in% c("Bridgeport","Hartford","New Haven","New Britain","Stamford","Waterbury")), 
        aes(x = Year, y = Total.crime.Rate)) + 
   geom_line(aes(group = Town)) +
   geom_point(aes(shape = Town)) +
@@ -936,11 +1061,11 @@ ggplot(data = ddply(totalcrime, .(Towngroup, Year), summarise,
   theme_minimal()
 ```
 --- 
-## Quality of life: voter turnout / registration
+## Quality of life: voter turnout
 
 Source: [CT Secretary of State](http://www.ct.gov/sots/cwp/view.asp?a=3179&q=392194), [HartfordInfo](http://hartfordinfo.org/).
 
-```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 12}
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 14}
 voting <- read.csv('2012-voting.csv')
 voting <- subset(voting, voting$Town %in% levels(towns$Town))
 voting$Town <- factor(voting$Town)
@@ -985,7 +1110,7 @@ vote2 <- ggplot(data = choropleth, aes(long, lat, group = group)) +
   geom_polygon(aes(fill = turnout)) + 
   scale_x_continuous(breaks = NULL) +
   scale_y_continuous(breaks = NULL) +
-  labs(x = NULL, y = NULL, title = 'Voter turnout relative\n to city turnout\n(all elections, 2002 - 2012)') + 
+  labs(x = NULL, y = NULL, title = 'Voter turnout relative\n to city turnout by district\n(all elections, 2002 - 2012)') + 
   coord_equal() +
 #  geom_polygon(data = CTTowns, colour = "grey", alpha = 0.5, fill = NA) +
   scale_fill_brewer(palette = "Purples", name = "Voter turnout\nrelative to city average") +
