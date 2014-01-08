@@ -473,10 +473,6 @@ Source: [UConn State Data Center](http://ctsdc.uconn.edu/projections.html). Avai
 
 ![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1.png) 
 
-```
-Error: non-numeric argument to binary operator
-```
-
 ---
 
 ## Who are we: Population and immigration

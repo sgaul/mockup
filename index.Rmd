@@ -81,7 +81,7 @@ library(gridExtra)
 ggplot(data = subset(merge(gh,towns,by.x = "city", by.y = "Town"),
                      Towngroup != "Hartford" & period >= 1950)) +
   geom_line(aes(x = period, y = population)) + 
-  labs(x = "Year", y = "Population")
+  labs(x = "Year", y = "Population") + 
   scale_y_continuous(labels = comma) + 
   facet_wrap(~ city, scales = "free_y", ncol = 7) +
   theme_minimal()
