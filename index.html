@@ -99,9 +99,428 @@
     <h2>Who are we: Population and immigration</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://www.wrapsnet.org/">Refugee Processing Center</a>. Availability: 2002 - present. </p>
+    <p>Source: <a href="http://ctsdc.uconn.edu/projections.html">UConn State Data Center</a>. Availability: 1900 - 2025 (2015 - 2025 projections). </p>
 
-<p><img src="assets/fig/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+<div id = 'chart1' class = 'rChart nvd3'></div>
+
+<script type='text/javascript'>
+ $(document).ready(function(){
+      drawchart1()
+    });
+    function drawchart1(){  
+      var opts = {
+ "dom": "chart1",
+"width":    700,
+"height":    425,
+"x": "period",
+"y": "sumpop",
+"group": "Towngroup",
+"type": "lineChart",
+"id": "chart1" 
+},
+        data = [
+ {
+ "period": 1900,
+"Towngroup": "Hartford",
+"sumpop": 79850,
+"sumpoor": null 
+},
+{
+ "period": 1900,
+"Towngroup": "Rural",
+"sumpop": 5136,
+"sumpoor": null 
+},
+{
+ "period": 1900,
+"Towngroup": "Suburban",
+"sumpop": 30970,
+"sumpoor": null 
+},
+{
+ "period": 1900,
+"Towngroup": "Urban periphery",
+"sumpop": 43141,
+"sumpoor": null 
+},
+{
+ "period": 1910,
+"Towngroup": "Hartford",
+"sumpop": 98915,
+"sumpoor": null 
+},
+{
+ "period": 1910,
+"Towngroup": "Rural",
+"sumpop": 5386,
+"sumpoor": null 
+},
+{
+ "period": 1910,
+"Towngroup": "Suburban",
+"sumpop": 33905,
+"sumpoor": null 
+},
+{
+ "period": 1910,
+"Towngroup": "Urban periphery",
+"sumpop": 55132,
+"sumpoor": null 
+},
+{
+ "period": 1920,
+"Towngroup": "Hartford",
+"sumpop": 138036,
+"sumpoor": null 
+},
+{
+ "period": 1920,
+"Towngroup": "Rural",
+"sumpop": 5803,
+"sumpoor": null 
+},
+{
+ "period": 1920,
+"Towngroup": "Suburban",
+"sumpop": 38294,
+"sumpoor": null 
+},
+{
+ "period": 1920,
+"Towngroup": "Urban periphery",
+"sumpop": 71399,
+"sumpoor": null 
+},
+{
+ "period": 1930,
+"Towngroup": "Hartford",
+"sumpop": 164072,
+"sumpoor": null 
+},
+{
+ "period": 1930,
+"Towngroup": "Rural",
+"sumpop": 6162,
+"sumpoor": null 
+},
+{
+ "period": 1930,
+"Towngroup": "Suburban",
+"sumpop": 43919,
+"sumpoor": null 
+},
+{
+ "period": 1930,
+"Towngroup": "Urban periphery",
+"sumpop": 104324,
+"sumpoor": null 
+},
+{
+ "period": 1940,
+"Towngroup": "Hartford",
+"sumpop": 166267,
+"sumpoor": null 
+},
+{
+ "period": 1940,
+"Towngroup": "Rural",
+"sumpop": 6641,
+"sumpoor": null 
+},
+{
+ "period": 1940,
+"Towngroup": "Suburban",
+"sumpop": 51271,
+"sumpoor": null 
+},
+{
+ "period": 1940,
+"Towngroup": "Urban periphery",
+"sumpop": 120848,
+"sumpoor": null 
+},
+{
+ "period": 1950,
+"Towngroup": "Hartford",
+"sumpop": 177397,
+"sumpoor": null 
+},
+{
+ "period": 1950,
+"Towngroup": "Rural",
+"sumpop": 8524,
+"sumpoor": null 
+},
+{
+ "period": 1950,
+"Towngroup": "Suburban",
+"sumpop": 66268,
+"sumpoor": null 
+},
+{
+ "period": 1950,
+"Towngroup": "Urban periphery",
+"sumpop": 166002,
+"sumpoor": null 
+},
+{
+ "period": 1960,
+"Towngroup": "Hartford",
+"sumpop": 162178,
+"sumpoor": null 
+},
+{
+ "period": 1960,
+"Towngroup": "Rural",
+"sumpop": 12973,
+"sumpoor": null 
+},
+{
+ "period": 1960,
+"Towngroup": "Suburban",
+"sumpop": 117468,
+"sumpoor": null 
+},
+{
+ "period": 1960,
+"Towngroup": "Urban periphery",
+"sumpop": 253926,
+"sumpoor": null 
+},
+{
+ "period": 1970,
+"Towngroup": "Hartford",
+"sumpop": 158017,
+"sumpoor":          26863 
+},
+{
+ "period": 1970,
+"Towngroup": "Rural",
+"sumpop": 17505,
+"sumpoor": null 
+},
+{
+ "period": 1970,
+"Towngroup": "Suburban",
+"sumpop": 168469,
+"sumpoor": null 
+},
+{
+ "period": 1970,
+"Towngroup": "Urban periphery",
+"sumpop": 325916,
+"sumpoor": null 
+},
+{
+ "period": 1980,
+"Towngroup": "Hartford",
+"sumpop": 136392,
+"sumpoor":          34371 
+},
+{
+ "period": 1980,
+"Towngroup": "Rural",
+"sumpop": 19542,
+"sumpoor":           1219 
+},
+{
+ "period": 1980,
+"Towngroup": "Suburban",
+"sumpop": 196648,
+"sumpoor":           5675 
+},
+{
+ "period": 1980,
+"Towngroup": "Urban periphery",
+"sumpop": 315897,
+"sumpoor":          14358 
+},
+{
+ "period": 1990,
+"Towngroup": "Hartford",
+"sumpop": 139739,
+"sumpoor":          38428 
+},
+{
+ "period": 1990,
+"Towngroup": "Rural",
+"sumpop": 21729,
+"sumpoor":            705 
+},
+{
+ "period": 1990,
+"Towngroup": "Suburban",
+"sumpop": 226612,
+"sumpoor":           5341 
+},
+{
+ "period": 1990,
+"Towngroup": "Urban periphery",
+"sumpop": 321324,
+"sumpoor":          11873 
+},
+{
+ "period": 2000,
+"Towngroup": "Hartford",
+"sumpop": 121578,
+"sumpoor":          37203 
+},
+{
+ "period": 2000,
+"Towngroup": "Rural",
+"sumpop": 23271,
+"sumpoor":            958 
+},
+{
+ "period": 2000,
+"Towngroup": "Suburban",
+"sumpop": 249706,
+"sumpoor":           7736 
+},
+{
+ "period": 2000,
+"Towngroup": "Urban periphery",
+"sumpop": 326765,
+"sumpoor":          19044 
+},
+{
+ "period": 2010,
+"Towngroup": "Hartford",
+"sumpop": 124775,
+"sumpoor":          40053 
+},
+{
+ "period": 2010,
+"Towngroup": "Rural",
+"sumpop": 25909,
+"sumpoor":           1205 
+},
+{
+ "period": 2010,
+"Towngroup": "Suburban",
+"sumpop": 270796,
+"sumpoor":           9245 
+},
+{
+ "period": 2010,
+"Towngroup": "Urban periphery",
+"sumpop": 336031,
+"sumpoor":          26451 
+},
+{
+ "period": 2015,
+"Towngroup": "Hartford",
+"sumpop": 125999,
+"sumpoor": null 
+},
+{
+ "period": 2015,
+"Towngroup": "Rural",
+"sumpop": 38388,
+"sumpoor": null 
+},
+{
+ "period": 2015,
+"Towngroup": "Suburban",
+"sumpop": 277497,
+"sumpoor": null 
+},
+{
+ "period": 2015,
+"Towngroup": "Urban periphery",
+"sumpop": 341742,
+"sumpoor": null 
+},
+{
+ "period": 2020,
+"Towngroup": "Hartford",
+"sumpop": 126656,
+"sumpoor": null 
+},
+{
+ "period": 2020,
+"Towngroup": "Rural",
+"sumpop": 38911,
+"sumpoor": null 
+},
+{
+ "period": 2020,
+"Towngroup": "Suburban",
+"sumpop": 282476,
+"sumpoor": null 
+},
+{
+ "period": 2020,
+"Towngroup": "Urban periphery",
+"sumpop": 346788,
+"sumpoor": null 
+},
+{
+ "period": 2025,
+"Towngroup": "Hartford",
+"sumpop": 126185,
+"sumpoor": null 
+},
+{
+ "period": 2025,
+"Towngroup": "Rural",
+"sumpop": 39463,
+"sumpoor": null 
+},
+{
+ "period": 2025,
+"Towngroup": "Suburban",
+"sumpop": 286373,
+"sumpoor": null 
+},
+{
+ "period": 2025,
+"Towngroup": "Urban periphery",
+"sumpop": 350406,
+"sumpoor": null 
+} 
+]
+  
+      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus")) {
+        var data = d3.nest()
+          .key(function(d){
+            //return opts.group === undefined ? 'main' : d[opts.group]
+            //instead of main would think a better default is opts.x
+            return opts.group === undefined ? opts.y : d[opts.group];
+          })
+          .entries(data);
+      }
+      
+      nv.addGraph(function() {
+        var chart = nv.models[opts.type]()
+          .x(function(d) { return d[opts.x] })
+          .y(function(d) { return d[opts.y] })
+          .width(opts.width)
+          .height(opts.height)
+         
+        chart
+  .forceY([      0, 3.5e+05 ])
+          
+        chart.xAxis
+  .axisLabel("Year")
+
+        
+        
+        chart.yAxis
+  .tickFormat(function(d) {return d3.format(',.0f')(d)})
+  .axisLabel("Population")
+      
+       d3.select("#" + opts.id)
+        .append('svg')
+        .datum(data)
+        .transition().duration(500)
+        .call(chart);
+
+       nv.utils.windowResize(chart.update);
+       return chart;
+      });
+    };
+</script>
 
   </article>
   <!-- Presenter Notes -->
@@ -109,12 +528,15 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Who are we: languages in school</h2>
+    <h2>Who are we: Population and immigration</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://sdeportal.ct.gov/Cedar/WEB/ct_report/EllDT.aspx">SDE</a>; availability: 2000-01 - 2010-11; breakouts: none.</p>
+    <p>Source: <a href="http://ctsdc.uconn.edu/projections.html">UConn State Data Center</a>. Availability: 1900 - 2025 (2015 - 2025 projections). </p>
 
-<p><img src="assets/fig/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+<p><img src="assets/fig/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+<pre><code>Error: non-numeric argument to binary operator
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -122,10 +544,23 @@
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>Who are we: school enrollment</h2>
+    <h2>Who are we: Population and immigration</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://sdeportal.ct.gov/Cedar/WEB/ct_report/EnrollmentDT.aspx">SDE</a>; availability: 2006-07 - 2010-11; breakouts: type of school</p>
+    <p>Source: <a href="http://www.wrapsnet.org/">Refugee Processing Center</a>. Availability: 2002 - present. </p>
+
+<p><img src="assets/fig/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Who are we: languages in school</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Source: <a href="http://sdeportal.ct.gov/Cedar/WEB/ct_report/EllDT.aspx">SDE</a>; availability: 2000-01 - 2010-11; breakouts: none.</p>
 
 <p><img src="assets/fig/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
 
@@ -133,7 +568,20 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-5" style="background:;">
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Who are we: school enrollment</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Source: <a href="http://sdeportal.ct.gov/Cedar/WEB/ct_report/EnrollmentDT.aspx">SDE</a>; availability: 2006-07 - 2010-11; breakouts: type of school</p>
+
+<p><img src="assets/fig/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>Who are we: commuting patterns</h2>
   </hgroup>
@@ -146,25 +594,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:;">
+<slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>Who are we: poverty and income</h2>
   </hgroup>
   <article data-timings="">
     <p>Source: <a href="http://factfinder2.census.gov/">Census</a>; availability: most recent 2007-2011; breakouts: age, gender, race / ethnicity, commuting, others</p>
-
-<p><img src="assets/fig/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-7" style="background:;">
-  <hgroup>
-    <h2>Who are we: poverty and income (2)</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>; availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others</p>
 
 <p><img src="assets/fig/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
 
@@ -172,12 +607,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
-    <h2>Who are we: Regional poverty</h2>
+    <h2>Who are we: poverty and income (2)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>; availability: 1970 - 2012</p>
+    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>; availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others</p>
 
 <p><img src="assets/fig/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
 
@@ -185,12 +620,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-10" style="background:;">
   <hgroup>
-    <h2>Who are we: poverty and income (3)</h2>
+    <h2>Who are we: Regional poverty</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>; availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others</p>
+    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>; availability: 1970 - 2012</p>
 
 <p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
 
@@ -198,12 +633,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-11" style="background:;">
   <hgroup>
-    <h2>Who are we: poverty and income (4)</h2>
+    <h2>Who are we: Regional poverty</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>; availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others</p>
+    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>; availability: 1970 - 2012</p>
 
 <p><img src="assets/fig/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"> </p>
 
@@ -211,9 +646,9 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-12" style="background:;">
   <hgroup>
-    <h2>Who are we: poverty and income (5)</h2>
+    <h2>Who are we: poverty and income (3)</h2>
   </hgroup>
   <article data-timings="">
     <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>; availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others</p>
@@ -224,12 +659,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
+<slide class="" id="slide-13" style="background:;">
   <hgroup>
-    <h2>Who we are: income (by neighborhood)</h2>
+    <h2>Who are we: poverty and income (4)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>.</p>
+    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>; availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others</p>
 
 <p><img src="assets/fig/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
 
@@ -237,12 +672,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
-    <h2>Education: 3rd grade reading</h2>
+    <h2>Who are we: poverty and income (5)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://sdeportal.ct.gov/Cedar/WEB/ct_report/CMTLandingDT.aspx">SDE</a>; availability: 2005-06 - 2010-2011.</p>
+    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>; availability: most recent 2007-2011; breakouts: gender, race / ethnicity, others</p>
 
 <p><img src="assets/fig/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
 
@@ -250,12 +685,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
-    <h2>Education: chronic absenteeism</h2>
+    <h2>Who we are: income (by neighborhood)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://sdeportal.ct.gov/Cedar/">SDE</a>; availability: 2012.</p>
+    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B19001&amp;prodType=table">Census</a>.</p>
 
 <p><img src="assets/fig/unnamed-chunk-12.png" alt="plot of chunk unnamed-chunk-12"> </p>
 
@@ -263,12 +698,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-15" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
-    <h2>Education: high-school graduation</h2>
+    <h2>Education: 3rd grade reading</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://sdeportal.ct.gov/Cedar/WEB/ResearchandReports/DataBulletins.aspx">SDE</a>; availability: 2010-11.</p>
+    <p>Source: <a href="http://sdeportal.ct.gov/Cedar/WEB/ct_report/CMTLandingDT.aspx">SDE</a>; availability: 2005-06 - 2010-2011.</p>
 
 <p><img src="assets/fig/unnamed-chunk-13.png" alt="plot of chunk unnamed-chunk-13"> </p>
 
@@ -276,12 +711,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
-    <h2>Economy: educational attainment</h2>
+    <h2>Education: chronic absenteeism</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://factfinder2.census.gov/">Census</a>; availability: most recent 2008-2012.</p>
+    <p>Source: <a href="http://sdeportal.ct.gov/Cedar/">SDE</a>; availability: 2012.</p>
 
 <p><img src="assets/fig/unnamed-chunk-14.png" alt="plot of chunk unnamed-chunk-14"> </p>
 
@@ -289,12 +724,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <hgroup>
-    <h2>Economy: educational attainment (totals)</h2>
+    <h2>Education: high-school graduation</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://factfinder2.census.gov/">Census</a>; availability: most recent 2008-2012.</p>
+    <p>Source: <a href="http://sdeportal.ct.gov/Cedar/WEB/ResearchandReports/DataBulletins.aspx">SDE</a>; availability: 2010-11.</p>
 
 <p><img src="assets/fig/unnamed-chunk-15.png" alt="plot of chunk unnamed-chunk-15"> </p>
 
@@ -302,12 +737,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-19" style="background:;">
   <hgroup>
-    <h2>Economy: educational attainment by race</h2>
+    <h2>Economy: educational attainment</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://factfinder2.census.gov/">Census</a>; most recent: 2008 - 2012.</p>
+    <p>Source: <a href="http://factfinder2.census.gov/">Census</a>; availability: most recent 2008-2012.</p>
 
 <p><img src="assets/fig/unnamed-chunk-16.png" alt="plot of chunk unnamed-chunk-16"> </p>
 
@@ -315,12 +750,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <hgroup>
-    <h2>Economy: workforce and unemployment</h2>
+    <h2>Economy: educational attainment (totals)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Sources: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&amp;prodType=table">ACS</a>breakouts: age, gender, race / ethnicity, nativity, commuting, others.</p>
+    <p>Source: <a href="http://factfinder2.census.gov/">Census</a>; availability: most recent 2008-2012.</p>
 
 <p><img src="assets/fig/unnamed-chunk-17.png" alt="plot of chunk unnamed-chunk-17"> </p>
 
@@ -328,12 +763,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:;">
+<slide class="" id="slide-21" style="background:;">
   <hgroup>
-    <h2>Economy: unemployment by race</h2>
+    <h2>Economy: educational attainment by race</h2>
   </hgroup>
   <article data-timings="">
-    <p>Sources: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&amp;prodType=table">ACS</a>. </p>
+    <p>Source: <a href="http://factfinder2.census.gov/">Census</a>; most recent: 2008 - 2012.</p>
 
 <p><img src="assets/fig/unnamed-chunk-18.png" alt="plot of chunk unnamed-chunk-18"> </p>
 
@@ -341,12 +776,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:;">
+<slide class="" id="slide-22" style="background:;">
   <hgroup>
-    <h2>Economy: unemployment by race (2)</h2>
+    <h2>Economy: workforce and unemployment</h2>
   </hgroup>
   <article data-timings="">
-    <p>Sources: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&amp;prodType=table">ACS</a>. </p>
+    <p>Sources: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&amp;prodType=table">ACS</a>breakouts: age, gender, race / ethnicity, nativity, commuting, others.</p>
 
 <p><img src="assets/fig/unnamed-chunk-19.png" alt="plot of chunk unnamed-chunk-19"> </p>
 
@@ -354,12 +789,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <hgroup>
-    <h2>Quality of life: home ownership (by town)</h2>
+    <h2>Economy: unemployment by race</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&amp;prodType=table">Census</a>; availability: most recent 2008-2012.</p>
+    <p>Sources: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&amp;prodType=table">ACS</a>. </p>
 
 <p><img src="assets/fig/unnamed-chunk-20.png" alt="plot of chunk unnamed-chunk-20"> </p>
 
@@ -367,12 +802,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:;">
+<slide class="" id="slide-24" style="background:;">
   <hgroup>
-    <h2>Quality of life: home ownership (by neighborhood)</h2>
+    <h2>Quality of life: home ownership (by town)</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&amp;prodType=table">Census</a>.</p>
+    <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&amp;prodType=table">Census</a>; availability: most recent 2008-2012.</p>
 
 <p><img src="assets/fig/unnamed-chunk-21.png" alt="plot of chunk unnamed-chunk-21"> </p>
 
@@ -380,9 +815,9 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-25" style="background:;">
   <hgroup>
-    <h2>Quality of life: home ownership (by race)</h2>
+    <h2>Quality of life: home ownership (by neighborhood)</h2>
   </hgroup>
   <article data-timings="">
     <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&amp;prodType=table">Census</a>.</p>
@@ -393,9 +828,9 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-25" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   <hgroup>
-    <h2>Quality of life: home ownership (by race 2)</h2>
+    <h2>Quality of life: home ownership (by race)</h2>
   </hgroup>
   <article data-timings="">
     <p>Source: <a href="http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&amp;prodType=table">Census</a>.</p>
@@ -406,7 +841,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-26" style="background:;">
+<slide class="" id="slide-27" style="background:;">
   <hgroup>
     <h2>Quality of life: housing and transit cost</h2>
   </hgroup>
@@ -419,7 +854,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-27" style="background:;">
+<slide class="" id="slide-28" style="background:;">
   <hgroup>
     <h2>Quality of life: crime (major CT towns)</h2>
   </hgroup>
@@ -432,7 +867,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-28" style="background:;">
+<slide class="" id="slide-29" style="background:;">
   <hgroup>
     <h2>Quality of life: crime (comparison)</h2>
   </hgroup>
@@ -445,7 +880,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-29" style="background:;">
+<slide class="" id="slide-30" style="background:;">
   <hgroup>
     <h2>Quality of life: crime (within region)</h2>
   </hgroup>
@@ -458,14 +893,27 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-30" style="background:;">
+<slide class="" id="slide-31" style="background:;">
   <hgroup>
     <h2>Quality of life: voter turnout</h2>
   </hgroup>
   <article data-timings="">
-    <p>Source: <a href="http://www.ct.gov/sots/cwp/view.asp?a=3179&amp;q=392194">CT Secretary of State</a>, <a href="http://hartfordinfo.org/">HartfordInfo</a>.</p>
+    <p>Source: <a href="http://www.ct.gov/sots/cwp/view.asp?a=3179&amp;q=392194">CT Secretary of State</a></p>
 
 <p><img src="assets/fig/unnamed-chunk-28.png" alt="plot of chunk unnamed-chunk-28"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:;">
+  <hgroup>
+    <h2>Quality of life: voter turnout</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Source: <a href="http://hartfordinfo.org/">HartfordInfo</a>.</p>
+
+<p><img src="assets/fig/unnamed-chunk-29.png" alt="plot of chunk unnamed-chunk-29"> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -489,170 +937,182 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Who are we: languages in school'>
+        data-slide=3 title='Who are we: Population and immigration'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Who are we: school enrollment'>
+        data-slide=4 title='Who are we: Population and immigration'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Who are we: commuting patterns'>
+        data-slide=5 title='Who are we: languages in school'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Who are we: poverty and income'>
+        data-slide=6 title='Who are we: school enrollment'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Who are we: poverty and income (2)'>
+        data-slide=7 title='Who are we: commuting patterns'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Who are we: Regional poverty'>
+        data-slide=8 title='Who are we: poverty and income'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Who are we: poverty and income (3)'>
+        data-slide=9 title='Who are we: poverty and income (2)'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Who are we: poverty and income (4)'>
+        data-slide=10 title='Who are we: Regional poverty'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Who are we: poverty and income (5)'>
+        data-slide=11 title='Who are we: Regional poverty'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Who we are: income (by neighborhood)'>
+        data-slide=12 title='Who are we: poverty and income (3)'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Education: 3rd grade reading'>
+        data-slide=13 title='Who are we: poverty and income (4)'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Education: chronic absenteeism'>
+        data-slide=14 title='Who are we: poverty and income (5)'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Education: high-school graduation'>
+        data-slide=15 title='Who we are: income (by neighborhood)'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Economy: educational attainment'>
+        data-slide=16 title='Education: 3rd grade reading'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Economy: educational attainment (totals)'>
+        data-slide=17 title='Education: chronic absenteeism'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Economy: educational attainment by race'>
+        data-slide=18 title='Education: high-school graduation'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Economy: workforce and unemployment'>
+        data-slide=19 title='Economy: educational attainment'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Economy: unemployment by race'>
+        data-slide=20 title='Economy: educational attainment (totals)'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Economy: unemployment by race (2)'>
+        data-slide=21 title='Economy: educational attainment by race'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Quality of life: home ownership (by town)'>
+        data-slide=22 title='Economy: workforce and unemployment'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Quality of life: home ownership (by neighborhood)'>
+        data-slide=23 title='Economy: unemployment by race'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Quality of life: home ownership (by race)'>
+        data-slide=24 title='Quality of life: home ownership (by town)'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Quality of life: home ownership (by race 2)'>
+        data-slide=25 title='Quality of life: home ownership (by neighborhood)'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Quality of life: housing and transit cost'>
+        data-slide=26 title='Quality of life: home ownership (by race)'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Quality of life: crime (major CT towns)'>
+        data-slide=27 title='Quality of life: housing and transit cost'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Quality of life: crime (comparison)'>
+        data-slide=28 title='Quality of life: crime (major CT towns)'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='Quality of life: crime (within region)'>
+        data-slide=29 title='Quality of life: crime (comparison)'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Quality of life: voter turnout'>
+        data-slide=30 title='Quality of life: crime (within region)'>
          30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='Quality of life: voter turnout'>
+         31
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=32 title='Quality of life: voter turnout'>
+         32
       </a>
     </li>
   </ul>
