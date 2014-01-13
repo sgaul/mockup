@@ -631,11 +631,19 @@ Sources: [ACS](http://factfinder2.census.gov/faces/tableservices/jsf/pages/produ
 
 
 --- 
+## Economy: unemployment by age
+
+Sources: [ACS](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B23025&prodType=table). 
+
+![plot of chunk unnamed-chunk-21](assets/fig/unnamed-chunk-21.png) 
+
+
+--- 
 ## Quality of life: home ownership (by town)
 
 Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table); availability: most recent 2008-2012.
 
-![plot of chunk unnamed-chunk-21](assets/fig/unnamed-chunk-21.png) 
+![plot of chunk unnamed-chunk-22](assets/fig/unnamed-chunk-22.png) 
 
 
 --- 
@@ -643,7 +651,7 @@ Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/pro
 
 Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table).
 
-![plot of chunk unnamed-chunk-22](assets/fig/unnamed-chunk-22.png) 
+![plot of chunk unnamed-chunk-23](assets/fig/unnamed-chunk-23.png) 
 
 
 --- 
@@ -651,7 +659,7 @@ Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/pro
 
 Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_11_5YR_B25008&prodType=table).
 
-![plot of chunk unnamed-chunk-23](assets/fig/unnamed-chunk-23.png) 
+![plot of chunk unnamed-chunk-24](assets/fig/unnamed-chunk-24.png) 
 
 
 --- 
@@ -659,7 +667,7 @@ Source: [Census](http://factfinder2.census.gov/faces/tableservices/jsf/pages/pro
 
 Source: [Location Affordability Index](http://lai.locationaffordability.info/).
 
-![plot of chunk unnamed-chunk-24](assets/fig/unnamed-chunk-24.png) 
+![plot of chunk unnamed-chunk-25](assets/fig/unnamed-chunk-25.png) 
 
 
 --- 
@@ -667,14 +675,14 @@ Source: [Location Affordability Index](http://lai.locationaffordability.info/).
 
 Source: [Dept. of Public Safety](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx); availability: 2001-10; breakouts: property / violent, type of crime
 
-![plot of chunk unnamed-chunk-25](assets/fig/unnamed-chunk-25.png) 
+![plot of chunk unnamed-chunk-26](assets/fig/unnamed-chunk-26.png) 
 
 --- 
 ## Quality of life: crime (comparison)
 
 Source: [FBI](http://www.ucrdatatool.gov/); availability: 1985-2012; breakouts: property / violent, type of crime
 
-![plot of chunk unnamed-chunk-26](assets/fig/unnamed-chunk-26.png) 
+![plot of chunk unnamed-chunk-27](assets/fig/unnamed-chunk-27.png) 
 
 --- 
 
@@ -682,14 +690,14 @@ Source: [FBI](http://www.ucrdatatool.gov/); availability: 1985-2012; breakouts: 
 
 Source: [Dept. of Public Safety](http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx); availability: 2001-10; breakouts: property / violent, type of crime
 
-![plot of chunk unnamed-chunk-27](assets/fig/unnamed-chunk-27.png) 
+![plot of chunk unnamed-chunk-28](assets/fig/unnamed-chunk-28.png) 
 
 --- 
 ## Quality of life: voter turnout
 
 Source: [CT Secretary of State](http://www.ct.gov/sots/cwp/view.asp?a=3179&q=392194)
 
-![plot of chunk unnamed-chunk-28](assets/fig/unnamed-chunk-28.png) 
+![plot of chunk unnamed-chunk-29](assets/fig/unnamed-chunk-29.png) 
 
 
 --- 
@@ -697,5 +705,5 @@ Source: [CT Secretary of State](http://www.ct.gov/sots/cwp/view.asp?a=3179&q=392
 
 Source: [HartfordInfo](http://hartfordinfo.org/).
 
-![plot of chunk unnamed-chunk-29](assets/fig/unnamed-chunk-29.png) 
+![plot of chunk unnamed-chunk-30](assets/fig/unnamed-chunk-30.png) 
 
